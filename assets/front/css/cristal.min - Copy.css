@@ -1193,17 +1193,17 @@ h6 {
 }
 
 main::-moz-selection {
-    background-color: #007bff;
+    background-color: #e0218a;
     color: #fff
 }
 
 main::selection {
-    background-color: #007bff;
+    background-color: #e0218a;
     color: #fff
 }
 
 main::-moz-selection {
-    background-color: #007bff;
+    background-color: #e0218a;
     color: #fff
 }
 
@@ -1222,7 +1222,7 @@ main p:last-child {
 
 a {
     background-color: transparent;
-    color: #007bff;
+    color: #e0218a;
     text-decoration: underline;
     outline: 0;
     -webkit-transition: color .3s ease-in-out;
@@ -1232,7 +1232,7 @@ a {
 
 a:focus,
 a:hover {
-    color: #007bff;
+    color: #e0218a;
     text-decoration: none
 }
 
@@ -1248,7 +1248,7 @@ a:hover {
 
 .section-heading .__subtitle {
     font-family: "Alata", sans-serif;
-    color: #007bff
+    color: #e0218a
 }
 
 .section-heading--left {
@@ -1324,11 +1324,11 @@ a:hover {
 }
 
 .top-bar--dark .top-bar__navigation a:after {
-    background-color: #2158a6
+    background-color: #e0218a
 }
 
 .top-bar--dark .top-bar__auth-btns a:after {
-    background-color: #2158a6
+    background-color: #e0218a
 }
 
 .top-bar {
@@ -1614,7 +1614,7 @@ a:hover {
 }
 
 .top-bar__navigation a.active {
-    color: #007bff
+    color: #e0218a
 }
 
 .top-bar__navigation .submenu {
@@ -1728,7 +1728,7 @@ a:hover {
     width: 100%;
     opacity: 1;
     visibility: visible;
-    background-color: #2158a6
+    background-color: #e0218a
 }
 
 .top-bar__choose-lang img {
@@ -1906,7 +1906,7 @@ a:hover {
     width: 60px;
     height: 60px;
     margin-right: 20px;
-    color: #007bff;
+    color: #e0218a;
     border: 2px solid #eee;
     -webkit-border-radius: 35%;
     border-radius: 35%;
@@ -2009,7 +2009,7 @@ a:hover {
 
 .start-screen--style-6 .play-btn:hover span {
     background-color: #fff;
-    color: #007bff
+    color: #e0218a
 }
 
 .start-screen--style-7 .img-shape:nth-of-type(1) {
@@ -2051,7 +2051,7 @@ a:hover {
 
 .start-screen--style-10 .play-btn:hover span {
     background-color: #fff;
-    color: #007bff
+    color: #e0218a
 }
 
 .start-screen--style-12 .start-screen__content__item {
@@ -2082,7 +2082,7 @@ a:hover {
     min-height: 400px;
     padding-top: 180px;
     padding-bottom: 30px;
-    background-color: #007bff;
+    background-color: #e0218a;
     color: #fff;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -2140,7 +2140,7 @@ form .textfield {
 }
 
 form .textfield:hover, form .textfield:focus {
-    border-color: #008aff
+    border-color: #e0218a
 }
 
 form .textfield::-webkit-input-placeholder {
@@ -2203,7 +2203,7 @@ form .textfield--dark:focus {
 }
 
 form .textfield.error {
-    border-color: #007bff!important
+    border-color: #e0218a!important
 }
 
 form input.textfield {
@@ -2258,7 +2258,7 @@ label {
 }
 
 .checkbox input[type=checkbox]:checked~span a {
-    color: #007bff
+    color: #e0218a
 }
 
 .checkbox i {
@@ -4163,8 +4163,8 @@ label {
         color: inherit
     }
     .top-bar--dark .top-bar__navigation a.active {
-        color: #008aff;
-        text-decoration: underline #008aff;
+        color: #e0218a;
+        text-decoration: underline #e0218a;
     }
     .top-bar {
         top: 15px;
@@ -4189,8 +4189,8 @@ label {
         margin-left: 15px
     }
     .top-bar__navigation ul li a:hover {
-        text-decoration: underline #008aff;
-        color: #008aff;
+        text-decoration: underline #e0218a;
+        color: #e0218a;
     }
     .top-bar__navigation li.has-submenu:hover>.submenu {
         margin-top: 20px;
@@ -4641,8 +4641,8 @@ a.btn.disabled,fieldset:disabled a.btn{
 }
 .btn-primary{
     color:#fff;
-    background-color:#286efb;
-    border-color:#286efb
+    background-color:#e0218a;
+    border-color:#e0218a
 }
 .btn-primary:hover{
     color:#fff;
@@ -4654,8 +4654,8 @@ a.btn.disabled,fieldset:disabled a.btn{
 }
 .btn-primary.disabled,.btn-primary:disabled{
     color:#fff;
-    background-color:#286efb;
-    border-color:#286efb
+    background-color:#e0218a;
+    border-color:#e0218a
 }
 .btn-primary:not(:disabled):not(.disabled).active,.btn-primary:not(:disabled):not(.disabled):active,.show>.btn-primary.dropdown-toggle{
     color:#fff;
@@ -4848,25 +4848,25 @@ a.btn.disabled,fieldset:disabled a.btn{
     box-shadow:0 0 0 0 rgba(77,82,91,.5)
 }
 .btn-outline-primary{
-    color:#286efb;
-    border-color:#286efb
+    color:#e0218a;
+    border-color:#e0218a
 }
 .btn-outline-primary:hover{
     color:#fff;
-    background-color:#286efb;
-    border-color:#286efb
+    background-color:#e0218a;
+    border-color:#e0218a
 }
 .btn-outline-primary.focus,.btn-outline-primary:focus{
     box-shadow:0 0 0 0 rgba(40,110,251,.5)
 }
 .btn-outline-primary.disabled,.btn-outline-primary:disabled{
-    color:#286efb;
+    color:#e0218a;
     background-color:transparent
 }
 .btn-outline-primary:not(:disabled):not(.disabled).active,.btn-outline-primary:not(:disabled):not(.disabled):active,.show>.btn-outline-primary.dropdown-toggle{
     color:#fff;
-    background-color:#286efb;
-    border-color:#286efb
+    background-color:#e0218a;
+    border-color:#e0218a
 }
 .btn-outline-primary:not(:disabled):not(.disabled).active:focus,.btn-outline-primary:not(:disabled):not(.disabled):active:focus,.show>.btn-outline-primary.dropdown-toggle:focus{
     box-shadow:0 0 0 0 rgba(40,110,251,.5)
@@ -5041,7 +5041,7 @@ a.btn.disabled,fieldset:disabled a.btn{
 }
 .btn-link{
     font-weight:500;
-    color:#286efb;
+    color:#e0218a;
     text-decoration:none
 }
 .btn-link:hover{

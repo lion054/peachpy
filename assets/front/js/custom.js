@@ -35,9 +35,6 @@
   var msg_data_limit_over = $('.msg_data_limit_over').val();
   var msg_email_exist = $('.msg_email_exist').val();
   var msg_recaptcha_is_required = $('.msg_recaptcha_is_required').val();
-  
-  var msg_per_month = $('.msg_per_month').val();
-  var msg_per_year = $('.msg_per_year').val();
 
 
   var needToConfirm=false;
@@ -73,7 +70,7 @@
             $('.price_month').show();
             $('.monthly_row').show();
             $('.yearly_row').hide();
-            $('.bill_type').html(msg_per_month);
+            $('.bill_type').html('per month');
             $('.billing_type').val('monthly');
         } else {
             $('.monthly_show').hide();
@@ -82,7 +79,7 @@
             $('.price_year').show();
             $('.yearly_row').show();
             $('.monthly_row').hide();
-            $('.bill_type').html(msg_per_year);
+            $('.bill_type').html('per year');
             $('.billing_type').val('yearly');
         }
     });

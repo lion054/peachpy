@@ -947,7 +947,7 @@ body.compensate-for-scrollbar {
     padding: .5rem .75rem;
     margin-left: -1px;
     line-height: 1.25;
-    color: #007bff;
+    color: #e0218a;
     background-color: #fff;
     border: 1px solid #dee2e6
 }
@@ -989,8 +989,8 @@ body.compensate-for-scrollbar {
 .page-item.active .page-link {
     z-index: 1;
     color: #fff;
-    background-color: #007bff;
-    border-color: #007bff
+    background-color: #e0218a;
+    border-color: #e0218a
 }
 
 .page-item.disabled .page-link {
@@ -1919,7 +1919,7 @@ body.compensate-for-scrollbar {
 }
 
 .text-primary {
-    color: #007bff!important
+    color: #e0218a!important
 }
 
 a.text-primary:focus,
