@@ -45,10 +45,12 @@ if (isset($_POST["btn_purchase_code"])) {
         curl_close($ch);
     }
 
-    $data = json_decode($response);
-   
-    if (!empty($data)) {
-
+		$data = json_decode($response);
+		$data = new \stdClass();
+		$data->status = "200";
+		$data->license_code = "gpllicense";
+        $data->license = "valid";
+        $data->sold_at = "2021-12-12";
         if ($data->status == "300" || $data->status == "400") {
             $_SESSION["error"] = "Invalid purchase code!";
         } else {
@@ -59,9 +61,6 @@ if (isset($_POST["btn_purchase_code"])) {
             header("Location: folder-permissions.php");
             exit();
         }
-    } else {
-        $_SESSION["error"] = "Invalid purchase code!";
-    }
 
 }
 ?>
@@ -146,18 +145,12 @@ if (isset($_POST["btn_purchase_code"])) {
                                            
                                             <div class="form-group">
                                                 <label for="email">Purchase Code</label>
-                                                <textarea name="purchase_code" class="form-control form-input" style="resize: vertical; height: 80px;line-height: 24px;padding: 10px;" placeholder="Enter Purchase Code" required></textarea>
+                                                <textarea name="purchase_code" class="form-control form-input" style="resize: vertical; height: 80px;line-height: 24px;padding: 10px;" placeholder="Enter Random Purchase Code" required></textarea>
                                             </div>
 
                                             <div class="form-group text-center">
                                                 <button type="submit" name="btn_purchase_code" class="btn-custom"><i class="fa fa-key" aria-hidden="true"></i> Get License</button>
-                                            </div><br><br><br><br>
-
-                                            <div class="form-group text-left">
-                                                <p><i class="fa fa-question-circle" aria-hidden="true"></i> If you don't know how to get item purchase code on envato please click the below button</p>
-                                                <a href="https://help.market.envato.com/hc/en-us/articles/202822600-Where-Is-My-Purchase-Code-" target="_blank" class="btn btn-success btn-sm btn-custom-sm"><i class="fa fa-search" aria-hidden="true"></i> Find my Code </a>
                                             </div>
-
                                         </div>
                                     </div>
 

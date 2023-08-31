@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1deb5ubuntu1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:8889
--- Generation Time: Jun 17, 2023 at 08:44 AM
--- Server version: 5.7.39
--- PHP Version: 7.4.33
+-- Host: localhost:3306
+-- Generation Time: Aug 29, 2023 at 11:21 PM
+-- Server version: 8.0.34-0ubuntu0.22.04.1
+-- PHP Version: 8.1.2-1ubuntu2.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `accufy_db_fresh`
+-- Database: `peachpydata`
 --
 
 -- --------------------------------------------------------
@@ -28,17 +28,17 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `attendence` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `business_id` int(11) NOT NULL,
-  `employee_id` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `business_id` int NOT NULL,
+  `employee_id` int NOT NULL,
   `date` varchar(255) NOT NULL,
   `check_in` varchar(255) NOT NULL,
   `check_out` varchar(255) NOT NULL,
   `note` text NOT NULL,
-  `status` int(11) NOT NULL,
+  `status` int NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -47,11 +47,22 @@ CREATE TABLE `attendence` (
 --
 
 CREATE TABLE `blog_category` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `name` varchar(255) NOT NULL,
   `slug` varchar(255) NOT NULL,
-  `status` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `status` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `blog_category`
+--
+
+INSERT INTO `blog_category` (`id`, `name`, `slug`, `status`) VALUES
+(1, 'Business Tips', 'business-tips', 1),
+(2, 'Startup Stories', 'startup-stories', 1),
+(3, 'Entrepreneurship', 'entrepreneurship', 1),
+(4, 'Marketing Strategies', 'marketing-strategies', 1),
+(5, 'Financial Management', 'financial-management', 1);
 
 -- --------------------------------------------------------
 
@@ -60,19 +71,28 @@ CREATE TABLE `blog_category` (
 --
 
 CREATE TABLE `blog_posts` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `title` varchar(255) DEFAULT NULL,
   `slug` varchar(255) DEFAULT NULL,
   `details` text,
-  `category_id` int(11) DEFAULT NULL,
+  `category_id` int DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   `thumb` varchar(255) DEFAULT NULL,
-  `status` int(11) DEFAULT NULL,
-  `hit` int(11) DEFAULT NULL,
-  `is_home` int(11) NOT NULL DEFAULT '0',
-  `is_featured` int(11) DEFAULT NULL,
+  `status` int DEFAULT NULL,
+  `hit` int DEFAULT NULL,
+  `is_home` int NOT NULL DEFAULT '0',
+  `is_featured` int DEFAULT NULL,
   `created_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `blog_posts`
+--
+
+INSERT INTO `blog_posts` (`id`, `title`, `slug`, `details`, `category_id`, `image`, `thumb`, `status`, `hit`, `is_home`, `is_featured`, `created_at`) VALUES
+(1, '10 Business Tips for Success', '10-business-tips-for-success', '<h5><p><span xss=\"removed\" xss=removed>﻿</span><span xss=removed>In today\'s competitive business landscape, implementing effective strategies is crucial for achieving success. Here are ten essential business tips that can help you thrive:</span></p><p><span xss=removed>Define Your Unique Value Proposition: Clearly articulate what sets your business apart from competitors.</span><br></p><p>Build a Strong Brand Identity: Develop a compelling brand image that resonates with your target audience.<br></p><p>Foster Customer Relationships: Focus on building long-term relationships with your customers to drive loyalty and repeat business.<br>Embrace Innovation: Stay ahead of the curve by continuously seeking innovative solutions and adapting to changing market trends.<br>Invest in Employee Development: Nurture your team\'s skills and knowledge to enhance productivity and foster a positive work environment.<br>Develop a Solid Marketing Strategy: Create a comprehensive marketing plan that encompasses various channels and tactics.<br>Monitor Financial Health: Keep a close eye on your financial metrics and ensure sustainable growth.<br>Emphasize Customer Service: Provide exceptional customer service to differentiate your business and earn customer loyalty.<br>Leverage Technology: Utilize technology tools and platforms to streamline operations and improve efficiency.<br>Stay Flexible and Adapt: Be willing to adjust your strategies and embrace change as needed.<br>Implementing these business tips can propel your venture towards success, enabling you to overcome challenges and seize opportunities in the dynamic business world.</p><p></p><p></p></h5>', 1, 'uploads/medium/tsokafalls_medium-1200x677.jpg', 'uploads/thumbnail/tsokafalls_thumb-150x84.jpg', 1, 0, 0, NULL, '2023-08-29 23:05:37'),
+(2, 'Startup Stories: Inspiring Entrepreneurial Journeys', 'startup-stories-inspiring-entrepreneurial-journeys', '<p xss=\"removed\">Starting a business from scratch requires passion, determination, and perseverance. Let\'s delve into the inspiring journeys of successful startups and the lessons they teach us:</p><ol xss=\"removed\"><li xss=\"removed\"><p xss=\"removed\">Company X: Revolutionizing the E-Commerce Landscape<br><p>Description: Company X began as a small online marketplace and grew into a global e-commerce giant. Their relentless focus on customer experience and innovative strategies disrupted traditional retail models.<br>Description: Startup Y leveraged technology to create an innovative telehealth platform, connecting patients with healthcare professionals remotely. Their dedication to improving access to quality healthcare has transformed the industry.<br>Description: Venture Z developed eco-friendly products that promote sustainable living. Their commitment to environmental responsibility and social impact has garnered widespread recognition and consumer support.</p></p></li><li xss=\"removed\"><p xss=\"removed\">Startup Y: Disrupting the Healthcare Industry<br></p></li><li xss=\"removed\"><p xss=\"removed\">Venture Z: Empowering Sustainable Living<br></p></li></ol><p xss=\"removed\">By exploring the journeys of these startups, we gain valuable insights into the challenges they faced, the strategies they employed, and the impact they made. These stories inspire aspiring entrepreneurs to pursue their dreams and make a difference.</p>', 2, 'uploads/medium/tsokafalls_medium-1200x677.jpg', 'uploads/thumbnail/tsokafalls_thumb-150x84.jpg', 1, 0, 0, NULL, '2023-08-29 23:06:00'),
+(3, 'Essential Steps for Successful Entrepreneurship', 'essential-steps-for-successful-entrepreneurship', '<p>Embarking on an entrepreneurial journey can be both exciting and daunting. Here are some essential steps to help you navigate the path to success:<br>Identify a Viable Business Idea: Research and identify a market gap or an opportunity that aligns with your passion and skills.<br>Craft a Solid Business Plan: Develop a comprehensive business plan that outlines your goals, target market, competitive analysis, and financial projections.<br>Secure Adequate Funding: Explore different funding options, such as bootstrapping, loans, venture capital, or crowdfunding, to support your business\'s launch and growth.<br>Build a Strong Network: Cultivate relationships with mentors, industry experts, and fellow entrepreneurs who can provide guidance, support, and valuable connections.<br>Develop a Minimum Viable Product (MVP): Create a prototype or MVP to validate your business idea and gather feedback from potential customers.<br>Test and Iterate: Continuously test and refine your product or service based on user feedback and market demands.<br>Create a Strong Brand: Develop a compelling brand identity, including a memorable logo, consistent messaging, and an engaging online presence.<br>Execute Effective Marketing Strategies: Utilize various marketing channels, such as social media, content marketing, and targeted advertising, to reach and engage your target audience.<br>Monitor and Adapt: Continuously monitor key performance indicators (KPIs) and adapt your strategies based on market trends and customer feedback.<br>Embrace a Growth Mindset: Stay resilient, embrace challenges as learning opportunities, and constantly seek personal and professional growth.<br>By following these essential steps, aspiring entrepreneurs can lay a strong foundation for their ventures and increase their chances of long-term success.</p>', 3, 'uploads/medium/Tsoka_Banner_medium-1200x683.jpg', 'uploads/thumbnail/Tsoka_Banner_thumb-150x85.jpg', 1, 0, 0, NULL, '2023-08-29 23:06:19');
 
 -- --------------------------------------------------------
 
@@ -81,27 +101,27 @@ CREATE TABLE `blog_posts` (
 --
 
 CREATE TABLE `business` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `uid` varchar(255) NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `user_id` int NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `slug` varchar(255) DEFAULT NULL,
-  `type` int(11) NOT NULL DEFAULT '1',
+  `type` int NOT NULL DEFAULT '1',
   `title` varchar(255) DEFAULT NULL,
   `biz_number` varchar(255) DEFAULT NULL,
   `vat_code` varchar(255) DEFAULT NULL,
-  `country` int(11) DEFAULT NULL,
+  `country` int DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
   `address` mediumtext,
   `category` varchar(255) DEFAULT NULL,
-  `business_type` int(11) DEFAULT NULL,
+  `business_type` int DEFAULT NULL,
   `logo` varchar(255) DEFAULT NULL,
-  `status` int(11) NOT NULL DEFAULT '0',
-  `is_primary` int(11) DEFAULT NULL,
-  `is_autoload_amount` int(11) NOT NULL,
-  `enable_stock` int(11) DEFAULT '0',
+  `status` int NOT NULL DEFAULT '0',
+  `is_primary` int DEFAULT NULL,
+  `is_autoload_amount` int NOT NULL,
+  `enable_stock` int DEFAULT '0',
   `enable_qrcode` varchar(155) DEFAULT '0',
-  `template_style` int(11) NOT NULL DEFAULT '1',
+  `template_style` int NOT NULL DEFAULT '1',
   `color` varchar(255) NOT NULL DEFAULT '#546af1',
   `footer_note` text,
   `footer_note_align` varchar(155) DEFAULT 'left',
@@ -117,7 +137,15 @@ CREATE TABLE `business` (
   `default_check_in` varchar(155) DEFAULT NULL,
   `default_check_out` varchar(155) DEFAULT NULL,
   `created_at` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `business`
+--
+
+INSERT INTO `business` (`id`, `uid`, `user_id`, `name`, `slug`, `type`, `title`, `biz_number`, `vat_code`, `country`, `phone`, `address`, `category`, `business_type`, `logo`, `status`, `is_primary`, `is_autoload_amount`, `enable_stock`, `enable_qrcode`, `template_style`, `color`, `footer_note`, `footer_note_align`, `estimate_footer_note`, `invoice_title`, `invoice_summary`, `estimate_title`, `estimate_summary`, `symbol_direction`, `space_price_symbol`, `num_format`, `price_separator`, `default_check_in`, `default_check_out`, `created_at`) VALUES
+(1, '4921', 2, 'Walter Kudzanai Mwanyisa', 'masiliose', 1, 'About Us', '33333333', '', 186, '0777910234', '8 Sullivan Close', '7', NULL, 'uploads/medium/logo-2_medium-148x98.png', 1, 1, 0, 0, '0', 1, '#546af1', NULL, 'left', NULL, NULL, NULL, NULL, NULL, 'left', '0', '2', '1', NULL, NULL, NULL),
+(2, '7836', 3, 'Bigmanliose', 'bigmanliose', 1, NULL, NULL, NULL, 188, NULL, NULL, '2', NULL, NULL, 0, 1, 0, 0, '0', 1, '#546af1', NULL, 'left', NULL, NULL, NULL, NULL, NULL, 'left', '0', '2', '1', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -126,9 +154,9 @@ CREATE TABLE `business` (
 --
 
 CREATE TABLE `business_category` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `business_category`
@@ -169,14 +197,14 @@ INSERT INTO `business_category` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `categories` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `business_id` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `business_id` int NOT NULL,
   `name` varchar(255) NOT NULL,
   `slug` varchar(255) NOT NULL,
-  `type` int(11) DEFAULT '0',
-  `parent_id` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `type` int DEFAULT '0',
+  `parent_id` int NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -185,13 +213,13 @@ CREATE TABLE `categories` (
 --
 
 CREATE TABLE `comments` (
-  `id` int(11) NOT NULL,
-  `post_id` int(11) DEFAULT NULL,
+  `id` int NOT NULL,
+  `post_id` int DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `message` text,
   `created_at` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -200,13 +228,13 @@ CREATE TABLE `comments` (
 --
 
 CREATE TABLE `contacts` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
+  `id` int NOT NULL,
+  `user_id` int DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `message` text,
   `created_at` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -215,15 +243,15 @@ CREATE TABLE `contacts` (
 --
 
 CREATE TABLE `country` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `name` varchar(20) NOT NULL,
   `code` varchar(2) NOT NULL,
   `dial_code` varchar(5) NOT NULL,
   `currency_name` varchar(20) NOT NULL,
   `currency_symbol` varchar(20) NOT NULL,
   `currency_code` varchar(10) NOT NULL,
-  `user_id` int(11) DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `user_id` int DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `country`
@@ -427,15 +455,15 @@ INSERT INTO `country` (`id`, `name`, `code`, `dial_code`, `currency_name`, `curr
 --
 
 CREATE TABLE `customers` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `business_id` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `business_id` int NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
   `thumb` varchar(255) DEFAULT NULL,
   `address` mediumtext,
-  `country` int(11) DEFAULT NULL,
+  `country` int DEFAULT NULL,
   `currency` varchar(255) DEFAULT NULL,
   `cus_number` varchar(255) DEFAULT NULL,
   `vat_code` varchar(255) DEFAULT NULL,
@@ -443,9 +471,16 @@ CREATE TABLE `customers` (
   `postal_code` varchar(11) DEFAULT NULL,
   `address1` mediumtext,
   `address2` mediumtext,
-  `status` int(11) NOT NULL,
+  `status` int NOT NULL,
   `created_at` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`id`, `user_id`, `business_id`, `name`, `email`, `phone`, `thumb`, `address`, `country`, `currency`, `cus_number`, `vat_code`, `city`, `postal_code`, `address1`, `address2`, `status`, `created_at`) VALUES
+(1, 2, 4921, 'Mai Siduna', '', '', NULL, NULL, 188, 'BWP', NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -454,13 +489,13 @@ CREATE TABLE `customers` (
 --
 
 CREATE TABLE `departments` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `business_id` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `business_id` int NOT NULL,
   `name` varchar(255) NOT NULL,
-  `status` int(11) NOT NULL,
+  `status` int NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -469,11 +504,11 @@ CREATE TABLE `departments` (
 --
 
 CREATE TABLE `employees` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `business_id` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `business_id` int NOT NULL,
   `name` varchar(255) NOT NULL,
-  `department_id` int(11) NOT NULL,
+  `department_id` int NOT NULL,
   `email` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
@@ -481,9 +516,9 @@ CREATE TABLE `employees` (
   `country` varchar(255) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   `thumb` varchar(255) DEFAULT NULL,
-  `status` int(11) NOT NULL,
+  `status` int NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -492,19 +527,19 @@ CREATE TABLE `employees` (
 --
 
 CREATE TABLE `expenses` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `business_id` int(11) NOT NULL,
-  `category` int(11) DEFAULT NULL,
-  `vendor` int(11) DEFAULT NULL,
+  `id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `business_id` int NOT NULL,
+  `category` int DEFAULT NULL,
+  `vendor` int DEFAULT NULL,
   `amount` decimal(10,2) DEFAULT NULL,
   `net_amount` decimal(10,2) DEFAULT NULL,
   `date` date DEFAULT NULL,
   `notes` mediumtext,
-  `tax` int(11) DEFAULT NULL,
+  `tax` int DEFAULT NULL,
   `file` varchar(255) DEFAULT NULL,
   `created_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -513,10 +548,10 @@ CREATE TABLE `expenses` (
 --
 
 CREATE TABLE `faqs` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `title` varchar(255) DEFAULT NULL,
   `details` mediumtext
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -525,14 +560,24 @@ CREATE TABLE `faqs` (
 --
 
 CREATE TABLE `features` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `details` text,
   `image` varchar(255) DEFAULT NULL,
   `thumb` varchar(255) DEFAULT NULL,
-  `is_home` int(11) DEFAULT '0',
-  `orders` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `is_home` int DEFAULT '0',
+  `orders` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `features`
+--
+
+INSERT INTO `features` (`id`, `name`, `details`, `image`, `thumb`, `is_home`, `orders`) VALUES
+(3, 'Business Email', 'A business email is an email address that uses a custom domain name associated with a company or organization. Instead of using a generic email provider like Gmail or Yahoo, a business email allows you to use an email address that matches your domain name (e.g., yourname@yourcompany.com).', 'uploads/files/email.gif', 'uploads/files/email.gif', 0, 1),
+(4, 'Invoicing', 'Our invoicing feature simplifies the process of creating professional invoices, automating calculations and providing customization options. Track payments, send reminders, and get paid faster with our streamlined invoicing solution.', 'uploads/files/invoice.gif', 'uploads/files/invoice.gif', 0, 2),
+(5, 'Digital Marketing', 'Enhance your digital marketing efforts with our comprehensive feature. Reach your target audience effectively and boost your online presence. Our platform offers a range of tools to optimize your campaigns, from keyword research and competitor analysis to social media scheduling and analytics. Gain valuable insights into your marketing performance and make data-driven decisions. With our digital marketing feature, you can streamline your strategies, increase engagement, and drive conversions. Stay ahead of the competition and achieve your marketing goals with ease.', 'uploads/files/marketing.gif', 'uploads/files/marketing.gif', 0, 4),
+(6, 'Cyber security', 'Protect your business with our comprehensive cyber security services. We offer security awareness training to educate your employees about best practices, including phishing and social engineering. Conduct simulated phishing attacks to assess vulnerability and provide targeted training. Access a library of resources to support ongoing education and foster a security-conscious culture. Benefit from real-time threat detection, proactive monitoring, compliance management, and risk mitigation. Partner with us to fortify your defenses, minimize risks, and safeguard your valuable data and systems.', 'uploads/files/security.gif', 'uploads/files/security.gif', 0, 3);
 
 -- --------------------------------------------------------
 
@@ -541,10 +586,10 @@ CREATE TABLE `features` (
 --
 
 CREATE TABLE `google_fonts` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `name` varchar(255) NOT NULL,
   `slug` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -553,44 +598,51 @@ CREATE TABLE `google_fonts` (
 --
 
 CREATE TABLE `invoice` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `business_id` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `business_id` int NOT NULL,
   `title` varchar(255) DEFAULT NULL,
-  `type` int(11) DEFAULT '1' COMMENT 'invoice = 1 & estimates = 2',
-  `recurring` int(11) DEFAULT '0',
-  `parent_id` int(11) DEFAULT NULL,
+  `type` int DEFAULT '1' COMMENT 'invoice = 1 & estimates = 2',
+  `recurring` int DEFAULT '0',
+  `parent_id` int DEFAULT NULL,
   `summary` varchar(255) DEFAULT NULL,
   `number` varchar(255) DEFAULT NULL,
   `poso_number` varchar(255) DEFAULT NULL,
-  `customer` int(11) DEFAULT NULL,
+  `customer` int DEFAULT NULL,
   `date` date DEFAULT NULL,
-  `discount` int(11) DEFAULT NULL,
+  `discount` int DEFAULT NULL,
   `payment_due` date DEFAULT NULL,
   `expire_on` date DEFAULT NULL,
-  `due_limit` int(11) DEFAULT NULL,
+  `due_limit` int DEFAULT NULL,
   `footer_note` mediumtext,
   `sub_total` decimal(10,2) DEFAULT NULL,
   `grand_total` decimal(10,2) DEFAULT NULL,
   `convert_total` decimal(10,2) DEFAULT NULL,
-  `status` int(11) DEFAULT '0',
+  `status` int DEFAULT '0',
   `qr_code` text,
   `reject_reason` text,
   `client_action_date` date DEFAULT NULL,
-  `is_sent` int(11) DEFAULT '0',
-  `is_completed` int(11) NOT NULL DEFAULT '0',
+  `is_sent` int DEFAULT '0',
+  `is_completed` int NOT NULL DEFAULT '0',
   `sent_date` datetime DEFAULT NULL,
   `recurring_start` date DEFAULT NULL,
   `recurring_end` date DEFAULT NULL,
   `frequency` varchar(255) DEFAULT NULL,
   `next_payment` date DEFAULT NULL,
-  `frequency_count` int(11) NOT NULL DEFAULT '0',
-  `is_view` int(11) DEFAULT NULL,
+  `frequency_count` int NOT NULL DEFAULT '0',
+  `is_view` int DEFAULT NULL,
   `view_date` datetime DEFAULT NULL,
-  `auto_send` int(11) DEFAULT '0',
-  `send_myself` int(11) DEFAULT NULL,
+  `auto_send` int DEFAULT '0',
+  `send_myself` int DEFAULT NULL,
   `created_at` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `invoice`
+--
+
+INSERT INTO `invoice` (`id`, `user_id`, `business_id`, `title`, `type`, `recurring`, `parent_id`, `summary`, `number`, `poso_number`, `customer`, `date`, `discount`, `payment_due`, `expire_on`, `due_limit`, `footer_note`, `sub_total`, `grand_total`, `convert_total`, `status`, `qr_code`, `reject_reason`, `client_action_date`, `is_sent`, `is_completed`, `sent_date`, `recurring_start`, `recurring_end`, `frequency`, `next_payment`, `frequency_count`, `is_view`, `view_date`, `auto_send`, `send_myself`, `created_at`) VALUES
+(1, 2, 4921, 'Test Invoice', 1, 0, NULL, '123456', '2023-1', '', 1, '2023-08-29', 0, '2023-08-29', NULL, 1, '<p>lionel chibaba</p>', '129.00', '129.00', '188.19', 1, 'uploads/files/qrcode_11974904382.png', NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, 0, NULL, '2023-08-29 15:11:28');
 
 -- --------------------------------------------------------
 
@@ -599,15 +651,22 @@ CREATE TABLE `invoice` (
 --
 
 CREATE TABLE `invoice_items` (
-  `id` int(11) NOT NULL,
-  `invoice_id` int(11) NOT NULL,
-  `item` int(11) DEFAULT NULL,
+  `id` int NOT NULL,
+  `invoice_id` int NOT NULL,
+  `item` int DEFAULT NULL,
   `details` text,
-  `qty` int(11) DEFAULT NULL,
+  `qty` int DEFAULT NULL,
   `price` decimal(10,2) DEFAULT NULL,
   `total` decimal(10,2) DEFAULT NULL,
-  `type` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `type` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `invoice_items`
+--
+
+INSERT INTO `invoice_items` (`id`, `invoice_id`, `item`, `details`, `qty`, `price`, `total`, `type`) VALUES
+(1, 1, 1, 'hezvooo', 1, '129.00', '129.00', NULL);
 
 -- --------------------------------------------------------
 
@@ -616,14 +675,14 @@ CREATE TABLE `invoice_items` (
 --
 
 CREATE TABLE `invoice_payment_record` (
-  `id` int(11) NOT NULL,
-  `invoice_id` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `invoice_id` int NOT NULL,
   `amount` decimal(10,2) DEFAULT NULL,
   `payment_date` date DEFAULT NULL,
   `payment_method` varchar(255) DEFAULT NULL,
   `notes` text,
   `created_at` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -632,10 +691,10 @@ CREATE TABLE `invoice_payment_record` (
 --
 
 CREATE TABLE `invoice_taxes` (
-  `id` int(11) NOT NULL,
-  `invoice_id` int(11) NOT NULL,
-  `tax_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id` int NOT NULL,
+  `invoice_id` int NOT NULL,
+  `tax_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -644,14 +703,14 @@ CREATE TABLE `invoice_taxes` (
 --
 
 CREATE TABLE `language` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `name` varchar(255) NOT NULL,
   `slug` varchar(255) NOT NULL,
   `short_name` varchar(255) NOT NULL,
   `code` varchar(255) DEFAULT NULL,
   `text_direction` varchar(255) NOT NULL,
-  `status` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `status` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `language`
@@ -667,12 +726,12 @@ INSERT INTO `language` (`id`, `name`, `slug`, `short_name`, `code`, `text_direct
 --
 
 CREATE TABLE `lang_values` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `type` varchar(255) DEFAULT NULL,
   `label` varchar(255) NOT NULL,
   `keyword` varchar(255) NOT NULL,
   `english` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `lang_values`
@@ -843,7 +902,7 @@ INSERT INTO `lang_values` (`id`, `type`, `label`, `keyword`, `english`) VALUES
 (162, 'user', 'Notes', 'notes', 'Notes'),
 (163, 'user', 'Yearly', 'yearly', 'Yearly'),
 (164, 'user', 'Monthly ', 'monthly', 'Monthly '),
-(165, 'user', 'Sign in', 'sign-in', 'Sign in'),
+(165, 'user', 'Sign in', 'sign-in', 'Login'),
 (166, 'admin', 'Packages by Users', 'packages-by-users', 'Packages by Users'),
 (167, 'admin', 'Basic Package', 'basic-package', 'Basic Package'),
 (168, 'admin', 'Standard Package', 'standard-package', 'Standard Package'),
@@ -908,7 +967,7 @@ INSERT INTO `lang_values` (`id`, `type`, `label`, `keyword`, `english`) VALUES
 (227, 'admin', 'Features', 'features', 'Features'),
 (228, 'admin', 'Thumb', 'thumb', 'Thumb'),
 (229, 'admin', 'Edit Feature', 'edit-feature', 'Edit Feature'),
-(230, 'admin', 'Every invoice paid is positive incoming revenue for your business. Accufy enables you to easily create and send professional invoices, with advanced features like recurring billing. asd', 'every-invoice-paid-is-positive-incoming-revenue-for-your-business.-accufy-enables-you-to-easily-create-and-send-professional-invoices-with-advanced-features-like-recurring-billing.-asd', 'Every invoice paid is positive incoming revenue for your business. Accufy enables you to easily create and send professional invoices, with advanced features like recurring billing. asd'),
+(230, 'admin', 'Every invoice paid is positive incoming revenue for your business. PeachPy enables you to easily create and send professional invoices, with advanced features like recurring billing. asd', 'every-invoice-paid-is-positive-incoming-revenue-for-your-business.-PeachPy-enables-you-to-easily-create-and-send-professional-invoices-with-advanced-features-like-recurring-billing.-asd', 'Every invoice paid is positive incoming revenue for your business. PeachPy enables you to easily create and send professional invoices, with advanced features like recurring billing. asd'),
 (231, 'admin', 'Upload Image ', 'upload-image', 'Upload Image '),
 (232, 'admin', 'Add New Feature', 'add-new-feature', 'Add New Feature'),
 (233, 'admin', 'Save ', 'save', 'Save '),
@@ -919,7 +978,7 @@ INSERT INTO `lang_values` (`id`, `type`, `label`, `keyword`, `english`) VALUES
 (238, 'admin', 'Edit Package ', 'edit-package', 'Edit Package '),
 (239, 'admin', 'Edit Features', 'edit-features', 'Edit Features'),
 (240, 'admin', 'Add New Page', 'add-new-page', 'Add New Page'),
-(241, 'admin', 'Pages', 'pages', 'Pages'),
+(241, 'admin', 'Pages', 'pages', 'Services'),
 (242, 'admin', 'Edit page', 'edit-page', 'Edit page'),
 (243, 'admin', 'Page title', 'page-title', 'Page title'),
 (244, 'admin', 'Page slug', 'page-slug', 'Page slug'),
@@ -1080,19 +1139,19 @@ INSERT INTO `lang_values` (`id`, `type`, `label`, `keyword`, `english`) VALUES
 (399, 'front', 'Home', 'home', 'Home'),
 (400, 'front', 'Blogs', 'blogs', 'Blogs'),
 (401, 'front', 'Contact', 'contact', 'Contact'),
-(402, 'front', 'Create Account', 'create-account', 'Create Account'),
+(402, 'front', 'Create Account', 'create-account', 'Email'),
 (403, 'front', 'Get Started', 'get-started', 'Get Started'),
-(404, 'front', 'The better way to make, move and manage your money', 'home-feature-title', 'The better way to keep track & manage your money'),
+(404, 'front', 'The better way to make, move and manage your money', 'home-feature-title', 'Power Up Your Business with Our Services'),
 (405, 'front', 'Workflow', 'workflow', 'Workflow'),
-(406, 'front', 'Look at a glance how our app works', 'how-app-works', 'Look at a glance how our app works'),
+(406, 'front', 'Look at a glance how our app works', 'how-app-works', 'Look at a glance how our platform works'),
 (407, 'front', 'Choose Plan', 'choose-plan', 'Choose Plan'),
 (408, 'front', 'Choose your comfortable plan', 'choose-your-comfortable-plan', 'Choose your comfortable plan'),
 (409, 'front', 'Get Paid', 'get-paid', 'Get Paid'),
-(410, 'front', 'Paid via paypal payment method', 'paid-via-paypal-payment-method', 'Paid via paypal payment method'),
+(410, 'front', 'Paid via digital payment methods', 'paid-via-paypal-payment-method', 'Paid via digital payment methods'),
 (411, 'front', 'Start Working', 'start-working', 'Start Working'),
 (412, 'front', 'Start Using and explore the featuers', 'start-using-and-explore-the-featuers', 'Start Using and explore the features'),
 (413, 'front', 'Clients Say', 'clients-say', 'Clients Say'),
-(414, 'front', 'Learn more, Build skills & Empower yourself', 'learn-more-build-skills-empower-yourself', 'Learn more, Build skills & Empower yourself'),
+(414, 'front', 'Learn more, Build skills & Empower yourself', 'learn-more-build-skills-empower-yourself', '<img class="img-fluid" src="https://peachpy.cloud/uploads/medium/bac_medium-300x100.png" width="159" height="45" alt="" /> Business Blog'),
 (415, 'front', 'Get in touch', 'get-in-touch', 'Get in touch'),
 (416, 'front', '404 Not Found', '404-not-found', '404 Not Found'),
 (417, 'front', 'The resource requested could not be found on this site!', '404-msg', 'The resource requested could not be found on this site!'),
@@ -1523,17 +1582,17 @@ INSERT INTO `lang_values` (`id`, `type`, `label`, `keyword`, `english`) VALUES
 --
 
 CREATE TABLE `package` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `slug` varchar(255) DEFAULT NULL,
   `price` decimal(10,2) DEFAULT '0.00',
   `monthly_price` decimal(10,2) DEFAULT NULL,
   `bill_type` varchar(255) DEFAULT NULL,
-  `dis_month` int(11) NOT NULL DEFAULT '0',
-  `dis_year` int(11) NOT NULL DEFAULT '0',
-  `is_special` int(11) NOT NULL DEFAULT '0',
-  `is_active` int(11) DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `dis_month` int NOT NULL DEFAULT '0',
+  `dis_year` int NOT NULL DEFAULT '0',
+  `is_special` int NOT NULL DEFAULT '0',
+  `is_active` int DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `package`
@@ -1551,18 +1610,18 @@ INSERT INTO `package` (`id`, `name`, `slug`, `price`, `monthly_price`, `bill_typ
 --
 
 CREATE TABLE `package_features` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `slug` varchar(255) NOT NULL,
   `basic` varchar(255) DEFAULT NULL,
   `standared` varchar(255) DEFAULT NULL,
   `premium` varchar(255) DEFAULT NULL,
-  `year_basic` int(11) DEFAULT NULL,
-  `year_standared` int(11) DEFAULT NULL,
-  `year_premium` int(11) DEFAULT NULL,
+  `year_basic` int DEFAULT NULL,
+  `year_standared` int DEFAULT NULL,
+  `year_premium` int DEFAULT NULL,
   `type` varchar(255) DEFAULT NULL,
   `text` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `package_features`
@@ -1585,13 +1644,13 @@ INSERT INTO `package_features` (`id`, `name`, `slug`, `basic`, `standared`, `pre
 --
 
 CREATE TABLE `pages` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `title` varchar(255) DEFAULT NULL,
   `slug` varchar(255) DEFAULT NULL,
   `details` longtext,
-  `status` int(11) DEFAULT NULL,
+  `status` int DEFAULT NULL,
   `created_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1600,9 +1659,9 @@ CREATE TABLE `pages` (
 --
 
 CREATE TABLE `payment` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `puid` varchar(255) NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `user_id` int NOT NULL,
   `package` varchar(255) DEFAULT NULL,
   `billing_type` varchar(255) DEFAULT NULL,
   `payment_type` varchar(255) DEFAULT NULL,
@@ -1611,7 +1670,15 @@ CREATE TABLE `payment` (
   `status` varchar(255) NOT NULL,
   `created_at` date NOT NULL,
   `expire_on` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `payment`
+--
+
+INSERT INTO `payment` (`id`, `puid`, `user_id`, `package`, `billing_type`, `payment_type`, `txn_id`, `amount`, `status`, `created_at`, `expire_on`) VALUES
+(1, '73105', 2, '1', 'monthly', NULL, NULL, '0.00', 'verified', '2023-08-27', '2023-09-27'),
+(2, '39584', 3, '1', 'monthly', NULL, NULL, '0.00', 'verified', '2023-08-29', '2023-09-29');
 
 -- --------------------------------------------------------
 
@@ -1620,12 +1687,12 @@ CREATE TABLE `payment` (
 --
 
 CREATE TABLE `payment_advance` (
-  `id` int(11) NOT NULL,
-  `business_id` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `business_id` int NOT NULL,
+  `customer_id` int NOT NULL,
   `amount` decimal(10,0) NOT NULL,
   `created_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1634,18 +1701,18 @@ CREATE TABLE `payment_advance` (
 --
 
 CREATE TABLE `payment_records` (
-  `id` int(11) NOT NULL,
-  `invoice_id` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `invoice_id` int NOT NULL,
   `business_id` varchar(255) NOT NULL,
-  `customer_id` int(11) NOT NULL,
+  `customer_id` int NOT NULL,
   `amount` decimal(10,2) NOT NULL,
   `convert_amount` decimal(10,2) DEFAULT NULL,
   `payment_date` date NOT NULL,
-  `payment_method` int(11) DEFAULT NULL,
+  `payment_method` int DEFAULT NULL,
   `note` mediumtext,
   `type` varchar(255) DEFAULT 'income',
   `created_at` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1654,15 +1721,15 @@ CREATE TABLE `payment_records` (
 --
 
 CREATE TABLE `payouts` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `user_id` int NOT NULL,
   `payout_method` varchar(255) NOT NULL,
   `method_details` varchar(255) NOT NULL,
-  `amount` bigint(20) NOT NULL,
+  `amount` bigint NOT NULL,
   `transaction_id` varchar(255) DEFAULT NULL,
-  `status` int(11) NOT NULL,
+  `status` int NOT NULL,
   `created_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1671,20 +1738,27 @@ CREATE TABLE `payouts` (
 --
 
 CREATE TABLE `products` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `business_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `business_id` int NOT NULL,
+  `quantity` int NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `slug` varchar(255) DEFAULT NULL,
   `price` decimal(10,2) NOT NULL,
   `details` text,
-  `is_sell` int(11) DEFAULT NULL,
-  `is_buy` int(11) DEFAULT NULL,
-  `income_category` int(11) DEFAULT NULL,
-  `expense_category` int(11) DEFAULT NULL,
+  `is_sell` int DEFAULT NULL,
+  `is_buy` int DEFAULT NULL,
+  `income_category` int DEFAULT NULL,
+  `expense_category` int DEFAULT NULL,
   `created_at` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `user_id`, `business_id`, `quantity`, `name`, `slug`, `price`, `details`, `is_sell`, `is_buy`, `income_category`, `expense_category`, `created_at`) VALUES
+(1, 2, 4921, 0, 'Sugar Rush', NULL, '129.00', NULL, 1, 0, 0, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -1693,12 +1767,12 @@ CREATE TABLE `products` (
 --
 
 CREATE TABLE `product_services` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `details` text,
   `image` varchar(255) DEFAULT NULL,
   `thumb` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1707,10 +1781,10 @@ CREATE TABLE `product_services` (
 --
 
 CREATE TABLE `product_tax` (
-  `id` int(11) NOT NULL,
-  `product_id` int(11) DEFAULT NULL,
-  `tax_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id` int NOT NULL,
+  `product_id` int DEFAULT NULL,
+  `tax_id` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1719,11 +1793,11 @@ CREATE TABLE `product_tax` (
 --
 
 CREATE TABLE `rates` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `code` varchar(255) DEFAULT NULL,
   `rate` varchar(255) DEFAULT NULL,
   `date` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `rates`
@@ -1872,16 +1946,16 @@ INSERT INTO `rates` (`id`, `code`, `rate`, `date`) VALUES
 --
 
 CREATE TABLE `referrals` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `referrar_id` varchar(255) DEFAULT NULL,
   `order_id` varchar(255) DEFAULT NULL,
-  `user_id` int(11) DEFAULT '0',
-  `status` int(11) DEFAULT '0',
+  `user_id` int DEFAULT '0',
+  `status` int DEFAULT '0',
   `amount` varchar(255) DEFAULT NULL,
   `commision` varchar(255) DEFAULT NULL,
   `commision_amount` varchar(255) DEFAULT NULL,
   `created_at` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1890,14 +1964,14 @@ CREATE TABLE `referrals` (
 --
 
 CREATE TABLE `referral_settings` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `is_enable` varchar(255) DEFAULT NULL,
   `referral_policy` text,
   `commision_rate` varchar(255) DEFAULT NULL,
   `minimum_payout` varchar(255) DEFAULT '0',
   `payment_method` varchar(255) DEFAULT NULL,
   `referral_guideline` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `referral_settings`
@@ -1913,18 +1987,18 @@ INSERT INTO `referral_settings` (`id`, `is_enable`, `referral_policy`, `commisio
 --
 
 CREATE TABLE `salary` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `business_id` int(11) NOT NULL,
-  `department_id` int(11) NOT NULL,
-  `employee_id` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `business_id` int NOT NULL,
+  `department_id` int NOT NULL,
+  `employee_id` int NOT NULL,
   `amount` varchar(255) NOT NULL,
   `acount` varchar(255) NOT NULL,
   `method` varchar(255) NOT NULL,
   `note` varchar(255) DEFAULT NULL,
-  `status` int(11) NOT NULL,
+  `status` int NOT NULL,
   `created_at` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1933,13 +2007,13 @@ CREATE TABLE `salary` (
 --
 
 CREATE TABLE `services` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `user_id` int NOT NULL,
   `name` varchar(500) DEFAULT NULL,
   `details` text,
   `image` varchar(255) DEFAULT NULL,
   `thumb` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -1948,7 +2022,7 @@ CREATE TABLE `services` (
 --
 
 CREATE TABLE `settings` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `site_name` varchar(255) DEFAULT NULL,
   `site_title` varchar(255) DEFAULT NULL,
   `favicon` varchar(255) DEFAULT NULL,
@@ -1961,7 +2035,7 @@ CREATE TABLE `settings` (
   `admin_email` varchar(255) DEFAULT NULL,
   `mobile` varchar(255) DEFAULT NULL,
   `copyright` varchar(255) DEFAULT NULL,
-  `pagination_limit` int(11) DEFAULT NULL,
+  `pagination_limit` int DEFAULT NULL,
   `facebook` varchar(255) DEFAULT NULL,
   `instagram` varchar(255) DEFAULT NULL,
   `twitter` varchar(255) DEFAULT NULL,
@@ -1969,33 +2043,33 @@ CREATE TABLE `settings` (
   `google_analytics` longtext,
   `site_color` varchar(255) DEFAULT NULL,
   `site_font` varchar(255) DEFAULT NULL,
-  `layout` int(11) DEFAULT NULL,
-  `site_info` int(11) NOT NULL DEFAULT '1',
+  `layout` int DEFAULT NULL,
+  `site_info` int NOT NULL DEFAULT '1',
   `about_info` mediumtext,
   `ind_code` varchar(255) DEFAULT NULL,
   `purchase_code` varchar(255) DEFAULT NULL,
-  `enable_captcha` int(11) DEFAULT '0',
-  `enable_registration` int(11) DEFAULT '1',
-  `enable_email_verify` int(11) DEFAULT '0',
-  `enable_paypal` int(11) NOT NULL DEFAULT '0',
-  `enable_delete_invoice` int(11) NOT NULL DEFAULT '1',
-  `enable_multilingual` int(11) NOT NULL DEFAULT '1',
-  `enable_discount` int(11) DEFAULT '0',
-  `enable_blog` int(11) NOT NULL DEFAULT '0',
-  `enable_faq` int(11) NOT NULL DEFAULT '0',
-  `enable_frontend` int(11) DEFAULT '1',
+  `enable_captcha` int DEFAULT '0',
+  `enable_registration` int DEFAULT '1',
+  `enable_email_verify` int DEFAULT '0',
+  `enable_paypal` int NOT NULL DEFAULT '0',
+  `enable_delete_invoice` int NOT NULL DEFAULT '1',
+  `enable_multilingual` int NOT NULL DEFAULT '1',
+  `enable_discount` int DEFAULT '0',
+  `enable_blog` int NOT NULL DEFAULT '0',
+  `enable_faq` int NOT NULL DEFAULT '0',
+  `enable_frontend` int DEFAULT '1',
   `captcha_site_key` varchar(255) DEFAULT NULL,
   `captcha_secret_key` varchar(255) DEFAULT NULL,
   `paypal_email` varchar(255) DEFAULT NULL,
   `paypal_mode` varchar(255) DEFAULT 'sandbox',
-  `paypal_payment` int(11) NOT NULL DEFAULT '0',
-  `stripe_payment` int(11) NOT NULL DEFAULT '0',
+  `paypal_payment` int NOT NULL DEFAULT '0',
+  `stripe_payment` int NOT NULL DEFAULT '0',
   `publish_key` varchar(255) DEFAULT NULL,
   `secret_key` varchar(255) DEFAULT NULL,
   `paystack_payment` varchar(155) DEFAULT '0',
   `paystack_secret_key` varchar(255) DEFAULT NULL,
   `paystack_public_key` varchar(255) DEFAULT NULL,
-  `razorpay_payment` int(11) DEFAULT '0',
+  `razorpay_payment` int DEFAULT '0',
   `razorpay_key_id` varchar(255) DEFAULT NULL,
   `razorpay_key_secret` varchar(255) DEFAULT NULL,
   `mail_protocol` varchar(255) DEFAULT NULL,
@@ -2006,28 +2080,28 @@ CREATE TABLE `settings` (
   `mail_username` varchar(255) DEFAULT NULL,
   `mail_password` varchar(255) DEFAULT NULL,
   `currency` varchar(255) NOT NULL DEFAULT 'USD',
-  `country` int(11) DEFAULT '178',
+  `country` int DEFAULT '178',
   `symbol_direction` varchar(155) DEFAULT 'left',
-  `space_price_symbol` int(11) DEFAULT '0',
-  `num_format` int(11) DEFAULT '2',
-  `price_separator` int(11) DEFAULT '1',
+  `space_price_symbol` int DEFAULT '0',
+  `num_format` int DEFAULT '2',
+  `price_separator` int DEFAULT '1',
   `trial_days` varchar(255) DEFAULT '15',
-  `lang` int(11) DEFAULT '1',
+  `lang` int DEFAULT '1',
   `sid` varchar(255) DEFAULT '2020-02-02',
-  `theme` int(11) NOT NULL DEFAULT '1',
-  `time_zone` int(11) DEFAULT '51',
+  `theme` int NOT NULL DEFAULT '1',
+  `time_zone` int DEFAULT '51',
   `rpa_enable` varchar(155) DEFAULT NULL,
   `pdf_type` varchar(155) DEFAULT '1',
   `type` varchar(255) NOT NULL DEFAULT 'live',
   `version` varchar(255) NOT NULL DEFAULT 'v1.0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `settings`
 --
 
 INSERT INTO `settings` (`id`, `site_name`, `site_title`, `favicon`, `logo`, `hero_img`, `keywords`, `description`, `terms_service`, `footer_about`, `admin_email`, `mobile`, `copyright`, `pagination_limit`, `facebook`, `instagram`, `twitter`, `linkedin`, `google_analytics`, `site_color`, `site_font`, `layout`, `site_info`, `about_info`, `ind_code`, `purchase_code`, `enable_captcha`, `enable_registration`, `enable_email_verify`, `enable_paypal`, `enable_delete_invoice`, `enable_multilingual`, `enable_discount`, `enable_blog`, `enable_faq`, `enable_frontend`, `captcha_site_key`, `captcha_secret_key`, `paypal_email`, `paypal_mode`, `paypal_payment`, `stripe_payment`, `publish_key`, `secret_key`, `paystack_payment`, `paystack_secret_key`, `paystack_public_key`, `razorpay_payment`, `razorpay_key_id`, `razorpay_key_secret`, `mail_protocol`, `mail_title`, `mail_host`, `mail_port`, `mail_encryption`, `mail_username`, `mail_password`, `currency`, `country`, `symbol_direction`, `space_price_symbol`, `num_format`, `price_separator`, `trial_days`, `lang`, `sid`, `theme`, `time_zone`, `rpa_enable`, `pdf_type`, `type`, `version`) VALUES
-(1, 'Accufy', 'SaaS Business & Accounting Software', 'uploads/thumbnail/clou_logo_medium-137x99_thumb-100x72.png', 'uploads/medium/bac_medium-300x100.png', 'uploads/big/hero-img_big-500x500.png', 'saas,finincial software,accounting software,facturation', 'Simplifies invoices and expense tracking, helping you save time and money. Create your first invoice in less than 60 seconds.', '<h2><strong>Terms of service and the law</strong></h2>\r\n\r\n<p>A business organization needs a terms of service agreement on its site while making sure it is also included within customer contracts. It\'s important to make this link and show it to customers so that they understand everything clearly.</p>\r\n\r\n<p>It is also very important to include an additional step where customers can confirm that they\'ve read and that they agree with your terms of service.</p>\r\n\r\n<p>Additionally, for all organizations that offer services or products online, no matter where they are located, it\'s important that their terms of service are compliant with E-commerce Regulations and Consumer Information Regulations.</p>\r\n\r\n<p>On top of that, you should make sure to check the Sale of Goods and Supply of Services Act of 1980 to avoid any legal difficulties and ensure the safety of your business.</p>\r\n\r\n<p>When it comes to Australia, for example, websites are not allowed to misrepresent themselves. The information located on a site should not be deceptive or misleading in any way when talking about services or products. This is how a website can comply with consumer law in Australia.</p>\r\n\r\n<p>There have been a few cases where the law sided with the customers because the terms of service page was simply too large and the court decided that it was very unlikely that anyone would have the time or patience to read the whole thing.</p>\r\n\r\n<p>A different case where terms of service were questioned is where a major retailer didn\'t put them in a visible spot. This is also very important to keep in mind when placing a terms of service section.</p>\r\n', 'Simplifies invoices and expense tracking, helping you save time and money. Create your first invoice in less than 60 seconds.', 'md.mhhn@gmail.com', '', '© 2021 All rights reserved.', 0, 'facebook.com', 'facebook.com', 'facebook.com', 'linkedin', '', '', '', 0, 1, 'SW52YWxpZCBMaWNlbnNlIEtleQ==', NULL, '', 0, 1, 0, 0, 1, 0, 1, 1, 1, 1, '6Ld0SpcUAAAAAFpKkQaTwbENLukNG_hMpPpykHt9', '', '', 'sandbox', 1, 1, '', '', '0', '', '', 0, '', '', 'smtp', 'Accufy Mail', 'smtp.gmail.com', '465', 'ssl', 'codericksml@gmail.com', 'bTNoM2RJOTIyMiM=', 'USD', 178, 'left', 1, 2, 1, '14', 1, '2023-06-17', 2, 49, '1', '2', 'live', '2.6');
+(1, 'PeachPy', 'Business Email, Invoicing, Security and Verification', 'uploads/thumbnail/clou_logo_medium-137x99_thumb-100x72.png', 'uploads/medium/bac_medium-300x100.png', 'uploads/big/Business_mission_big-500x500.gif', 'saas,finincial software,accounting software,facturation', 'Launch Your Creative Business with Confidence and Unleash Your Potential with Our Comprehensive and Secure Services.', '<h2><strong>Terms of service and the law</strong></h2>\r\n\r\n<p>A business organization needs a terms of service agreement on its site while making sure it is also included within customer contracts. It\'s important to make this link and show it to customers so that they understand everything clearly.</p>\r\n\r\n<p>It is also very important to include an additional step where customers can confirm that they\'ve read and that they agree with your terms of service.</p>\r\n\r\n<p>Additionally, for all organizations that offer services or products online, no matter where they are located, it\'s important that their terms of service are compliant with E-commerce Regulations and Consumer Information Regulations.</p>\r\n\r\n<p>On top of that, you should make sure to check the Sale of Goods and Supply of Services Act of 1980 to avoid any legal difficulties and ensure the safety of your business.</p>\r\n\r\n<p>When it comes to Australia, for example, websites are not allowed to misrepresent themselves. The information located on a site should not be deceptive or misleading in any way when talking about services or products. This is how a website can comply with consumer law in Australia.</p>\r\n\r\n<p>There have been a few cases where the law sided with the customers because the terms of service page was simply too large and the court decided that it was very unlikely that anyone would have the time or patience to read the whole thing.</p>\r\n\r\n<p>A different case where terms of service were questioned is where a major retailer didn\'t put them in a visible spot. This is also very important to keep in mind when placing a terms of service section.</p>\r\n', 'Streamline Your Business with Effortless Invoicing, Secure Email, Cybersecurity, and Digital Marketing. Save Time and Money, Create Your First Invoice in Under 60 Seconds!', 'info@peachpy.cloud', '', '© 2023 PeachPy Cloud.', 0, 'https://facebook.com/peachpy', 'https://facebook.com/peachpy', 'https://facebook.com/peachpy', 'https://facebook.com/peachpy', '', '', '', 0, 1, 'SW52YWxpZCBMaWNlbnNlIEtleQ==', '7db59d73f9cd1df78441abeb3a0e44f629e0983f', 'a53accfe-2f24-4fcd-bb57-63c76e8265f3', 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, '6Ld0SpcUAAAAAFpKkQaTwbENLukNG_hMpPpykHt9', '', '', 'sandbox', 1, 1, '', '', '0', '', '', 0, '', '', 'smtp', 'PeachPy Mail', 'smtp.gmail.com', '465', 'ssl', 'peachpytech@gmail.com', 'WmltYmFid2UxMg==', 'USD', 178, 'left', 1, 2, 1, '14', 1, '2023-08-26', 2, 423, '1', '2', 'live', '2.6');
 
 -- --------------------------------------------------------
 
@@ -2036,12 +2110,21 @@ INSERT INTO `settings` (`id`, `site_name`, `site_title`, `favicon`, `logo`, `her
 --
 
 CREATE TABLE `site_contacts` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `message` text,
   `created_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `site_contacts`
+--
+
+INSERT INTO `site_contacts` (`id`, `name`, `email`, `message`, `created_at`) VALUES
+(1, 'Renan', 'renan@daystarpayments.com', 'Hi peachpy.cloud team.\r\n\r\nCheers on your new enterprise! At Daystar, we specialize in Payment Processing for startups of all risk profiles. \r\n\r\nIf our merchant account offer isn\'t the best, a 1000 dollar cash card is yours. Proposal, anyone?\r\n\r\nWondering how we do this? \r\nhttps://www.daystarpayments.com/zero-fee-processing/?utm_source=email&utm_medium=startupform\r\n\r\n\r\nRegards,\r\n\r\n\r\nRenan Rangel\r\nBusiness director @ DaystarPayments.com\r\n\r\nSay \"Unsub\" if my timing isn\'t quite right.\r\n', '2023-08-29 08:54:53'),
+(2, 'Denis', 'denisberger.web@gmail.com', 'Hello there, peachpy.cloud\r\n\r\nI was going through your website & I personally see a lot of potential in your website & business.\r\n\r\nWe can increase targeted traffic to your website so that it appears on Google\'s first page. Bing, Yahoo, AOL, etc.\r\n\r\nDo you want to appear on the front page, then?\r\n\r\nPlease provide your name, contact information, and email.\r\n\r\nRegards,\r\nDenis  ! Business Development Executive', '2023-08-29 16:26:50'),
+(3, 'Denis', 'denisberger.web@gmail.com', 'Hello there, peachpy.cloud\r\n\r\nI was going through your website & I personally see a lot of potential in your website & business.\r\n\r\nWe can increase targeted traffic to your website so that it appears on Google\'s first page. Bing, Yahoo, AOL, etc.\r\n\r\nDo you want to appear on the front page, then?\r\n\r\nPlease provide your name, contact information, and email.\r\n\r\nRegards,\r\nDenis  ! Business Development Executive', '2023-08-29 17:06:16');
 
 -- --------------------------------------------------------
 
@@ -2050,12 +2133,21 @@ CREATE TABLE `site_contacts` (
 --
 
 CREATE TABLE `tags` (
-  `id` int(11) NOT NULL,
-  `post_id` int(11) DEFAULT NULL,
+  `id` int NOT NULL,
+  `post_id` int DEFAULT NULL,
   `tag` varchar(255) DEFAULT NULL,
   `tag_slug` varchar(255) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `tags`
+--
+
+INSERT INTO `tags` (`id`, `post_id`, `tag`, `tag_slug`, `created_at`) VALUES
+(11, 1, '', '', NULL),
+(12, 2, '', '', NULL),
+(13, 3, '', '', NULL);
 
 -- --------------------------------------------------------
 
@@ -2064,17 +2156,17 @@ CREATE TABLE `tags` (
 --
 
 CREATE TABLE `tax` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `business_id` int(11) NOT NULL,
-  `type` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `business_id` int NOT NULL,
+  `type` int NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `rate` decimal(10,2) DEFAULT '0.00',
   `number` varchar(255) DEFAULT NULL,
   `details` mediumtext,
-  `is_invoices` int(11) DEFAULT NULL,
-  `is_recoverable` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `is_invoices` int DEFAULT NULL,
+  `is_recoverable` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -2083,11 +2175,11 @@ CREATE TABLE `tax` (
 --
 
 CREATE TABLE `tax_type` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `business_id` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `business_id` int NOT NULL,
   `name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -2096,13 +2188,13 @@ CREATE TABLE `tax_type` (
 --
 
 CREATE TABLE `testimonials` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `designation` varchar(255) DEFAULT NULL,
   `feedback` text,
   `image` varchar(255) DEFAULT NULL,
   `thumb` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -2111,9 +2203,9 @@ CREATE TABLE `testimonials` (
 --
 
 CREATE TABLE `time_zone` (
-  `id` int(10) NOT NULL,
+  `id` int NOT NULL,
   `name` varchar(35) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `time_zone`
@@ -2553,7 +2645,7 @@ INSERT INTO `time_zone` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `title` varchar(255) DEFAULT NULL,
   `slug` varchar(255) DEFAULT NULL,
@@ -2567,31 +2659,40 @@ CREATE TABLE `users` (
   `user_type` varchar(100) DEFAULT 'registered',
   `phone` varchar(255) DEFAULT NULL,
   `address` text,
-  `country` int(11) DEFAULT NULL,
+  `country` int DEFAULT NULL,
   `city` varchar(255) DEFAULT NULL,
   `state` varchar(255) DEFAULT NULL,
   `postcode` varchar(255) DEFAULT NULL,
   `layouts` varchar(255) NOT NULL DEFAULT 'style1',
   `image` varchar(255) DEFAULT NULL,
   `thumb` varchar(255) DEFAULT NULL,
-  `paypal_payment` int(11) DEFAULT '1',
-  `stripe_payment` int(11) DEFAULT '1',
+  `paypal_payment` int DEFAULT '1',
+  `stripe_payment` int DEFAULT '1',
   `paypal_email` varchar(255) DEFAULT NULL,
   `publish_key` varchar(255) DEFAULT NULL,
   `secret_key` varchar(255) DEFAULT NULL,
   `paystack_payment` varchar(155) DEFAULT '0',
   `paystack_secret_key` varchar(255) DEFAULT NULL,
   `paystack_public_key` varchar(255) DEFAULT NULL,
-  `razorpay_payment` int(11) DEFAULT '0',
+  `razorpay_payment` int DEFAULT '0',
   `razorpay_key_id` varchar(255) DEFAULT NULL,
   `razorpay_key_secret` varchar(255) DEFAULT NULL,
-  `status` int(11) DEFAULT '0',
-  `email_verified` int(11) DEFAULT NULL,
+  `status` int DEFAULT '0',
+  `email_verified` int DEFAULT NULL,
   `verify_code` varchar(255) DEFAULT NULL,
-  `hit` int(11) DEFAULT '0',
+  `hit` int DEFAULT '0',
   `trial_expire` date DEFAULT NULL,
   `created_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `title`, `slug`, `email`, `user_name`, `password`, `role`, `referral_id`, `referral_earn`, `account_type`, `user_type`, `phone`, `address`, `country`, `city`, `state`, `postcode`, `layouts`, `image`, `thumb`, `paypal_payment`, `stripe_payment`, `paypal_email`, `publish_key`, `secret_key`, `paystack_payment`, `paystack_secret_key`, `paystack_public_key`, `razorpay_payment`, `razorpay_key_id`, `razorpay_key_secret`, `status`, `email_verified`, `verify_code`, `hit`, `trial_expire`, `created_at`) VALUES
+(1, NULL, NULL, 'shingie', 'info@peachpy.cloud', 'shingie', '$2y$10$WZWryjS1enxoZmpX6Oo.D.guzjyOP1Qo0NV0yLchfTsS2KEAGX3GS', 'admin', NULL, '0', NULL, 'registered', NULL, NULL, NULL, NULL, NULL, NULL, 'style1', NULL, NULL, 1, 1, NULL, NULL, NULL, '0', NULL, NULL, 0, NULL, NULL, 1, NULL, NULL, 0, NULL, NULL),
+(2, 'Tsoka Africa', NULL, 'lionel-masimba-siduna', 'lionel.siduna@gmail.com', 'lionel-masimba-siduna', '$2y$10$FxehUnBtiwEjaLtseMQs5..8qatAuRmhBjkEzKep3m0W52JEP0WxO', 'user', 'TQ0JP43179', '0', 'pro', 'trial', '', '495 Pioneer Road', 188, 'Victoria Falls', 'gauteng', '9449', 'style1', 'uploads/medium/logo-2_medium-148x98.png', 'uploads/thumbnail/logo-2_thumb-148x98.png', 1, 1, NULL, NULL, NULL, '0', NULL, NULL, 0, NULL, NULL, 1, NULL, '49182f81e6a13cf5eaa496d51fea6406', 0, '2023-09-10', '2023-08-27 22:47:07'),
+(3, 'Lionel Masimba Siduna', NULL, 'lionel-masimba-siduna', 'bigmanliose@gmail.com', 'lionel-masimba-siduna', '$2y$10$pWOOH90huUkXCX7p58Qsx.zOXcX8u/QhmxPxzMrMXn98EAcwrUDWS', 'user', 'LoCB216552', '0', 'pro', 'trial', NULL, NULL, NULL, NULL, NULL, NULL, 'style1', NULL, 'assets/front/img/avatar.png', 1, 1, NULL, NULL, NULL, '0', NULL, NULL, 0, NULL, NULL, 1, NULL, 'c8ed21db4f678f3b13b9d5ee16489088', 0, '2023-09-12', '2023-08-29 12:54:46');
 
 -- --------------------------------------------------------
 
@@ -2600,11 +2701,11 @@ CREATE TABLE `users` (
 --
 
 CREATE TABLE `users_role` (
-  `id` int(11) NOT NULL,
-  `parent_id` int(11) NOT NULL,
-  `business_id` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `parent_id` int NOT NULL,
+  `business_id` int NOT NULL,
   `name` varchar(255) NOT NULL,
-  `country` int(11) DEFAULT NULL,
+  `country` int DEFAULT NULL,
   `city` varchar(255) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
@@ -2614,10 +2715,10 @@ CREATE TABLE `users_role` (
   `position` varchar(255) NOT NULL,
   `role` varchar(255) NOT NULL,
   `is_send_invoice` varchar(255) DEFAULT NULL,
-  `approve` int(11) NOT NULL,
-  `status` int(11) NOT NULL,
+  `approve` int NOT NULL,
+  `status` int NOT NULL,
   `created_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -2626,10 +2727,10 @@ CREATE TABLE `users_role` (
 --
 
 CREATE TABLE `users_role_feature` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `name` varchar(255) NOT NULL,
   `slug` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `users_role_feature`
@@ -2651,13 +2752,13 @@ INSERT INTO `users_role_feature` (`id`, `name`, `slug`) VALUES
 --
 
 CREATE TABLE `users_role_feature_assign` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `role` varchar(255) NOT NULL,
-  `business_id` int(11) NOT NULL,
-  `feature_id` int(11) NOT NULL,
+  `business_id` int NOT NULL,
+  `feature_id` int NOT NULL,
   `feature_slug` varchar(255) DEFAULT NULL,
-  `view_only` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `view_only` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -2666,15 +2767,15 @@ CREATE TABLE `users_role_feature_assign` (
 --
 
 CREATE TABLE `vendors` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `business_id` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `business_id` int NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `address` mediumtext,
   `created_at` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Indexes for dumped tables
@@ -2984,295 +3085,295 @@ ALTER TABLE `vendors`
 -- AUTO_INCREMENT for table `attendence`
 --
 ALTER TABLE `attendence`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `blog_category`
 --
 ALTER TABLE `blog_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `blog_posts`
 --
 ALTER TABLE `blog_posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `business`
 --
 ALTER TABLE `business`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `business_category`
 --
 ALTER TABLE `business_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `country`
 --
 ALTER TABLE `country`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=190;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=190;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `expenses`
 --
 ALTER TABLE `expenses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `faqs`
 --
 ALTER TABLE `faqs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `features`
 --
 ALTER TABLE `features`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `google_fonts`
 --
 ALTER TABLE `google_fonts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `invoice`
 --
 ALTER TABLE `invoice`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `invoice_items`
 --
 ALTER TABLE `invoice_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `invoice_payment_record`
 --
 ALTER TABLE `invoice_payment_record`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `invoice_taxes`
 --
 ALTER TABLE `invoice_taxes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `language`
 --
 ALTER TABLE `language`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `lang_values`
 --
 ALTER TABLE `lang_values`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=837;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=837;
 
 --
 -- AUTO_INCREMENT for table `package`
 --
 ALTER TABLE `package`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `package_features`
 --
 ALTER TABLE `package_features`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `pages`
 --
 ALTER TABLE `pages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `payment_advance`
 --
 ALTER TABLE `payment_advance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `payment_records`
 --
 ALTER TABLE `payment_records`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `payouts`
 --
 ALTER TABLE `payouts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `product_services`
 --
 ALTER TABLE `product_services`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `product_tax`
 --
 ALTER TABLE `product_tax`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `rates`
 --
 ALTER TABLE `rates`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
 
 --
 -- AUTO_INCREMENT for table `referrals`
 --
 ALTER TABLE `referrals`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `referral_settings`
 --
 ALTER TABLE `referral_settings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `salary`
 --
 ALTER TABLE `salary`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `settings`
 --
 ALTER TABLE `settings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `site_contacts`
 --
 ALTER TABLE `site_contacts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tags`
 --
 ALTER TABLE `tags`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `tax`
 --
 ALTER TABLE `tax`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tax_type`
 --
 ALTER TABLE `tax_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `testimonials`
 --
 ALTER TABLE `testimonials`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `time_zone`
 --
 ALTER TABLE `time_zone`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=426;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=426;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users_role`
 --
 ALTER TABLE `users_role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users_role_feature`
 --
 ALTER TABLE `users_role_feature`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users_role_feature_assign`
 --
 ALTER TABLE `users_role_feature_assign`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `vendors`
 --
 ALTER TABLE `vendors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
